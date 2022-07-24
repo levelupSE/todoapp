@@ -1,0 +1,17 @@
+version: "3"
+services:
+  db:
+    image: "postgres:14.4"
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "54320:5432"
+    volumes:
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
