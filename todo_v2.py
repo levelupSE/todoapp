@@ -4,6 +4,7 @@ import psycopg2
 def generate_todo(db_manager):
     todos = db_manager.get_todos()
     if not todos:
+        print('Inserting todo')
         db_manager.insert_todo('Add todos')
 
 class DatabaseManager:
