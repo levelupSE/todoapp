@@ -13,7 +13,7 @@ class DatabaseManager:
 
     def get_todos(self):
         with self.db.cursor() as cur:
-            cur.execute('SELECT * FROM todo;')
+            cur.execute('SELECT todo_id, description FROM todo;')
             results = cur.fetchall()
         return results
 

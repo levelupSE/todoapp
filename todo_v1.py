@@ -12,7 +12,7 @@ db = psycopg2.connect(**{
 def generate_todo():
     # get todos from database
     with db.cursor() as cur:
-        cur.execute('SELECT * FROM todo;')
+        cur.execute('SELECT todo_id, description FROM todo;')
         todos = cur.fetchall()
 
     # if there are no todos, create a todo to add more todos
