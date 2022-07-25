@@ -1,5 +1,4 @@
 import unittest
-from unittest.mock import Mock
 from todo_v2 import DatabaseManager
 import psycopg2
 
