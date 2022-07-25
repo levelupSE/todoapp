@@ -1,9 +1,10 @@
+import os
 import psycopg2
 
 db = psycopg2.connect(**{
     'dbname': 'todo_app',
-    'password': 'password',
-    'user': 'postgres',
+    'user': os.environ.get('DB_USER'),
+    'password': os.environ.get('DB_PASSWORD'),
     'port': '54320',
     'host': 'localhost'
 })
