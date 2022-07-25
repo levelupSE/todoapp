@@ -5,7 +5,7 @@ def generate_todo(db_manager):
     todos = db_manager.get_todos()
     if not todos:
         print('Inserting todo')
-        db_manager.insert_todo('Add todos')
+        db_manager.create_todo('Add todos')
 
 class DatabaseManager:
     def __init__(self, db):
@@ -17,10 +17,10 @@ class DatabaseManager:
             results = cur.fetchall()
         return results
 
-    def insert_todo(self, description):
+    def create_todo(self, description):
         with self.db.cursor() as cur:
             cur.execute('INSERT INTO todo (description) VALUES (%s)', (description,))
-        self.db.commit()
+            self.db.commit()
 
 if __name__ == '__main__':
     db = psycopg2.connect(**{

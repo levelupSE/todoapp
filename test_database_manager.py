@@ -20,8 +20,8 @@ class TestDatabaseManager(unittest.TestCase):
             cur.execute('TRUNCATE todo')
         self.db.commit()
 
-    def test_insert_and_get_todos(self):
-        self.db_manager.insert_todo('todo')
+    def test_create_and_get_todos(self):
+        self.db_manager.create_todo('todo')
         todos = self.db_manager.get_todos()
         assert todos[0][1] == 'todo'
 
